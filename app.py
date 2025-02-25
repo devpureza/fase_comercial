@@ -21,7 +21,7 @@ else:
 
     # Verifica se o e-mail está na lista de autorizados
     if email_usuario not in EMAILS_PERMITIDOS:
-        st.error("❌ Acesso negado! Seu e-mail não tem permissão para acessar este sistema.")
+        st.error("❌ Acesso negado! Seu e-mail não tem permissão para acessar este sistema!")
         time.sleep(3)
         st.logout()  # Desloga o usuário automaticamente
         st.stop()  # Interrompe a execução da aplicação
