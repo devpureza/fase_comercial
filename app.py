@@ -1,64 +1,39 @@
 import streamlit as st
-import sqlite3
+import time
 
-st.set_page_config(page_title="Painel Geral", layout="wide")
+st.set_page_config(page_title="Sistema Comercial", layout="wide")
 
-st.title("📊 Painel Geral - Sistema Comercial")
+# Lista de e-mails autorizados
+EMAILS_PERMITIDOS = [
+    "mateus.pureza@eplugin.app.br"
+]
 
-# Conectar ao banco de dados
-conn = sqlite3.connect("database.db", check_same_thread=False)
-cursor = conn.cursor()
 
-# 📌 Obter Contagem de Leads e Propostas
-cursor.execute("SELECT COUNT(*) FROM leads")
-total_leads = cursor.fetchone()[0]
+# Verifica se o usuário está logado
+if not st.experimental_user.is_logged_in:
+    st.write("🔐 Faça login com sua conta Google para acessar o sistema.")
+    
+    if st.button("Log in com Google"):
+        st.login("google")
 
-cursor.execute("SELECT COUNT(*) FROM propostas")
-total_propostas = cursor.fetchone()[0]
+else:
+    email_usuario = st.experimental_user.email  # Captura o e-mail do usuário
 
-# 📌 Obter Valores Financeiros
-cursor.execute("SELECT SUM(valor) FROM propostas WHERE status = 'Em negociação'")
-valor_em_negociacao = cursor.fetchone()[0] or 0
+    # Verifica se o e-mail está na lista de autorizados
+    if email_usuario not in EMAILS_PERMITIDOS:
+        st.error("❌ Acesso negado! Seu e-mail não tem permissão para acessar este sistema.")
+        time.sleep(3)
+        st.logout()  # Desloga o usuário automaticamente
+        st.stop()  # Interrompe a execução da aplicação
 
-cursor.execute("SELECT SUM(valor) FROM propostas WHERE status = 'Aprovada'")
-valor_aprovado = cursor.fetchone()[0] or 0
+    # Se o e-mail for permitido, exibe o painel
+    
+    with st.sidebar:
+        st.sidebar.write(f"👤 Usuário: **{st.experimental_user.name}**")
+        st.sidebar.write(f"📧 E-mail: {email_usuario}")
+    
+    if st.sidebar.button("Sair"):
+        st.logout()
 
-conn.close()
-
-# 📌 Criar Cards de Visão Geral
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    st.metric(label="📋 Total de Leads", value=total_leads)
-
-with col2:
-    st.metric(label="📑 Total de Propostas", value=total_propostas)
-
-with col3:
-    st.metric(label="💰 Valor em Negociação", value=f"R$ {valor_em_negociacao:,.2f}")
-
-with col4:
-    st.metric(label="✅ Valor Aprovado", value=f"R$ {valor_aprovado:,.2f}")
-
-st.divider()
-
-# 📌 Atalhos para Outras Páginas
-st.subheader("📌 Acesso Rápido")
-
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    if st.button("📋 Gestão de Leads"):
-        st.switch_page("pages/leads.py")
-
-with col2:
-    if st.button("📑 Gestão de Propostas"):
-        st.switch_page("pages/propostas.py")
-
-with col3:
-    if st.button("📊 Pipeline de Vendas"):
-        st.switch_page("pages/pipeline.py")
-
-with col4:
-    if st.button("📈 Relatórios e Dashboards"):
-        st.switch_page("pages/dashboard.py")
+    st.write(f"✅ Bem-vindo, {st.experimental_user.name}!")
+    st.write("Aqui vai o painel comercial...")
