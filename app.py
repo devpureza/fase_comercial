@@ -5,7 +5,8 @@ st.set_page_config(page_title="Sistema Comercial", layout="wide")
 
 # Lista de e-mails autorizados
 EMAILS_PERMITIDOS = [
-    "mateus.pureza@eplugin.app.br"
+    "mateus.pureza@eplugin.app.br",
+    "devpureza@gmail.com"
 ]
 
 
