@@ -3,7 +3,8 @@ import time
 
 # Lista de e-mails autorizados
 EMAILS_PERMITIDOS = [
-    "mateus.pureza@eplugin.app.br"
+    "mateus.pureza@eplugin.app.br",
+    "devpureza@gmail.com"
 ]
 
 
