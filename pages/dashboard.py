@@ -5,6 +5,7 @@ from auth_guard import verificar_autenticacao
 from database import criar_tabelas
 # 🚀 Exigir login antes de carregar a página
 verificar_autenticacao()
+# Verificar e faz a criação de tabelas caso não exista
 criar_tabelas()
 
 st.title("📊 Relatórios e Dashboards")

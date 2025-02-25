@@ -1,12 +1,18 @@
 import streamlit as st
 import time
+from database import criar_tabelas
+
+#Verifica e cria tabelas caso necessário
+criar_tabelas()
 
 st.set_page_config(page_title="Sistema Comercial", layout="wide")
 
 # Lista de e-mails autorizados
 EMAILS_PERMITIDOS = [
     "mateus.pureza@eplugin.app.br",
-    "devpureza@gmail.com"
+    "devpureza@gmail.com",
+    "juliana.debortolo@eplugin.app.br",
+    "matheus.santos@eplugin.app.br"
 ]
 
 
