@@ -2,7 +2,6 @@ streamlit
 streamlit-authenticator
 streamlit-sortables
 Authlib
-sqlite3
 pygments
 markdown-it-py
 mdurl
