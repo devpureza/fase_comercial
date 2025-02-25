@@ -16,7 +16,9 @@ EMAILS_PERMITIDOS = [
     "devpureza@gmail.com",
     "juliana.debortolo@eplugin.app.br",
     "matheus.santos@eplugin.app.br",
-    "mapureza@gmail.com"
+    "mapureza@gmail.com",
+    "alan@eplugin.app.br"
+    "eduardo.mendes@b2agencia.com.br"
 ]
 
 # Verifica se o usuário está logado
