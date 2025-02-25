@@ -12,7 +12,8 @@ EMAILS_PERMITIDOS = [
     "mateus.pureza@eplugin.app.br",
     "devpureza@gmail.com",
     "juliana.debortolo@eplugin.app.br",
-    "matheus.santos@eplugin.app.br"
+    "matheus.santos@eplugin.app.br",
+    "mapureza@gmail.com"
 ]
 
 
