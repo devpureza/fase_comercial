@@ -2,9 +2,12 @@ import streamlit as st
 import sqlite3
 import re
 from auth_guard import verificar_autenticacao
-
+from database import criar_tabelas
 # 🚀 Exigir login antes de carregar a página
 verificar_autenticacao()
+
+criar_tabelas()
+
 
 st.title("📋 Gestão de Leads")
 
