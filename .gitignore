@@ -11,4 +11,4 @@ __pycache__/
 *.sqlite
 
 # Ignorar credenciais do Streamlit (se houver)
-.streamlit/secrets.toml
+# .streamlit/secrets.toml
