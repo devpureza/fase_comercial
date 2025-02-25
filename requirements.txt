@@ -1,5 +1,9 @@
 streamlit
+streamlit-authenticator
+streamlit-sortables
+Authlib
 sqlite3
-bcrypt
-pandas
-matplotlib
+pygments
+markdown-it-py
+mdurl
+rich
