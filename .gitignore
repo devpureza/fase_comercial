@@ -1,0 +1,14 @@
+# Ignorar o banco de dados SQLite
+database.db
+
+# Ignorar arquivos temporários do Python
+*.pyc
+__pycache__/
+
+# Ignorar logs e cache
+*.log
+*.cache
+*.sqlite
+
+# Ignorar credenciais do Streamlit (se houver)
+.streamlit/secrets.toml
